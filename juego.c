@@ -34,13 +34,15 @@ int main(){
 					printf("Ya no quedan palabras de tamano %i",max);
 					return 0;
 				}
+				printear(lista_aux);
+				system("pause");				
 				while(buscar_usada(lista_aux,palabra_al) == 1){
+					printear(lista_aux);
 					palabra_al = escoger_pal(lista1);//se elige la palabra al azar de tamano max
 				}
 				cont++;
 				strcpy(palabra_aux,palabra_al);
 				palabras_usadas(lista_aux, palabra_aux);
-
 				juego(max,palabra_al); //se inicia el juego y se le pasan el tamano maximo de letras de la palabra y la palabra a adivinar
 
 				}else{return 0;}	//si opcion es distinta de 1 retorna un valor 0	
@@ -49,4 +51,5 @@ int main(){
 	}else{
 		return 0; //si menu_ficha es distinto de 1, retorna un valor 0
 	}
+	return 0;
 }
