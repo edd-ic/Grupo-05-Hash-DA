@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "partida.h"
-#include <ctype.h> 
+ 
 
 
 int main(){
