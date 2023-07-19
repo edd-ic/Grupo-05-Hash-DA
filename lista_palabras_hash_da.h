@@ -128,7 +128,7 @@ lista_pal* crear_lista(int max){
     tash->tabla_hash = (tabla_hash*)malloc(sizeof(tabla_hash));
     tamano = pedir_tamano(max);
     tash->tabla_hash->tamano = tamano;
-    printf("\nTAMANO = %i\n",tash->tabla_hash->tamano);
+    //printf("\nTAMANO = %i\n",tash->tabla_hash->tamano);
     tash->tabla_hash->tabla = (char**)malloc(sizeof(char*) * tamano);
     iniciar_tabla(tash);
 
@@ -165,13 +165,13 @@ int buscar_usada(lista_pal* lista, char* palabra){
     strcpy(aux,palabra);
     for(j = 0; j<lista->tabla_aux->tamano; j++){
         if(lista->tabla_aux->tabla_aux[j] != NULL){
-            printf("\nj=%i\n",j);
-            system("pause");
-            printf("aux=%s\ttabla_aux=%s",aux,lista->tabla_aux->tabla_aux[j]);
-            system("pause");
+            //printf("\nj=%i\n",j);
+            //system("pause");
+            //printf("aux=%s\ttabla_aux=%s",aux,lista->tabla_aux->tabla_aux[j]);
+            //system("pause");
             if(strcmp(aux,lista->tabla_aux->tabla_aux[j])==0){
             //printf("aux=%s\ttabla_aux=%s",aux,lista->tabla_aux->tabla_aux);
-            system("pause");
+            //system("pause");
             return 1;
             }            
         }
