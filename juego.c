@@ -15,9 +15,9 @@ int main(){
 		lista_pal *lista_aux = crear_lista_aux(max);
 		lista_pal *lista1 = crear_lista(max);//se crea un archivo de tipo lista llamado lista_pal y se escanea el archivo palabras.txt para hacer una lista con las palabras de tama�o max
 		palabra_al = escoger_pal(lista1);//se elige la palabra al azar de tamano max
-		printf("%s", palabra_al);
-		strcpy(palabra_aux,palabra_al);
-		printf("%s",palabra_aux);
+		//printf("%s", palabra_al);
+		gstrcpy(palabra_aux,palabra_al);
+		//printf("%s",palabra_aux);
 		palabras_usadas(lista_aux,palabra_aux);
 		cont++;
 		limite = contar_palabras_archivo(max);

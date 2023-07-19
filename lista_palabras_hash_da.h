@@ -16,48 +16,15 @@ typedef struct lista_pal{
 }lista_pal;
 
 int hash(char palabra[100], int intento, int tamano){//cambiar por notacion radix....listoo!!
-    int largo = 0;
-    int valor = 0,a=0,b=0,c=0,d=0,e=0,f=0,g=0;
+    int largo = 0,i=0;
+    int valor = 0;
     largo = strlen(palabra);
-    if(largo==3){
-        a=palabra[0];
-        b=palabra[1];
-        c=palabra[2];
-        valor=(a*pow(tamano,2)+b*tamano+c); 
-    }else if(largo==4){
-        a=palabra[0];
-        b=palabra[1];
-        c=palabra[2];
-        d=palabra[3];
-    valor=((a*tamano*tamano*tamano)+(b*tamano*tamano)+(c*tamano)+d*1);
-    }else if(largo==5){
-        a=palabra[0];
-        b=palabra[1];
-        c=palabra[2];
-        d=palabra[3];
-        e=palabra[4];
-        valor=(a*pow(tamano,4)+b*pow(tamano,3)+c*pow(tamano,2)+d*pow(tamano,1)+e);
-    }else if(largo==6){
-        a=palabra[0];
-        b=palabra[1];
-        c=palabra[2];
-        d=palabra[3];
-        e=palabra[4];
-        f=palabra[5];
-        valor=(a*pow(tamano,5)+b*pow(tamano,4)+c*pow(tamano,3)+d*pow(tamano,2)+e*pow(tamano,4)+f);
-    }else if(largo==7){
-        a=palabra[0];
-        b=palabra[1];
-        c=palabra[2];
-        d=palabra[3];
-        e=palabra[4];
-        f=palabra[5];
-        g=palabra[6];
-        valor=(a*pow(tamano,6)+b*pow(tamano,5)+c*pow(tamano,4)+d*pow(tamano,3)+e*pow(tamano,2)+f*pow(tamano,1)+g);
-    }
+for (i = 0; i < largo; i++) {
+    valor += palabra[i] * pow(tamano, largo - i - 1);
+}
     int hash = ((valor % tamano) + intento) % tamano;
-    //printf("palabra=%s\nvalor=%i\n\nhash===%i",palabra,valor,hash);
-    //system("pause");
+    printf("palabra=%s\nvalor=%i\n\nhash===%i",palabra,valor,hash);
+    system("pause");
     return hash;
 }
 
