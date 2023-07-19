@@ -161,23 +161,23 @@ lista_pal* palabras_usadas(lista_pal* lista_aux, char palabra[100]){
     return 0;
 }
 
-int buscar_usada(lista_pal* lista, char* palabra){
-    int j;
-    char aux[100];
-    strcpy(aux,palabra);
-    for(j = 0; j<lista->tabla_pal_aux->tamano; j++){
-        if(lista->tabla_pal_aux->tabla_aux[j] != NULL){
-            //printf("\nj=%i\n",j);
-            //system("pause");
-            //printf("aux=%s\ttabla_aux=%s",aux,lista->tabla_pal_aux->tabla_aux[j]);
-            //system("pause");
-            if(strcmp(aux,lista->tabla_pal_aux->tabla_aux[j])==0){
-            //printf("aux=%s\ttabla_aux=%s",aux,lista->tabla_aux->tabla_aux);
-            //system("pause");
-            return 1;
-            }            
+int buscar_usada(lista_pal* tash, char* palabra){
+    int intento=0,num_aux=0;
+    char pal[100];
+    strcpy(pal,palabra);
+    num_aux = hash(palabra, intento, tash->tabla_pal_aux->tamano);
+    if(tash->tabla_pal_aux->tabla_aux[num_aux] == NULL){
+    }else{
+        while((intento < tash->tabla_pal_aux->tamano) && (tash->tabla_pal_aux->tabla_aux[num_aux] != NULL)){
+            if(strcmp(tash->tabla_pal_aux->tabla_aux[num_aux],pal)==0){
+                    return 1;
+            }else{
+            intento++;
+            num_aux = hash(palabra, intento, tash->tabla_pal_aux->tamano);
+            }
         }
     }
+
     return 0;
 }
 

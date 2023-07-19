@@ -36,7 +36,7 @@ int main(){
 					palabra_al = escoger_pal(lista1);//se elige la palabra al azar de tamano max
 					if(cont==limite){
 						printf("Ya no quedan palabras de tamano %i",max);
-						flag=0;
+						return 0;
 					}
 					printear(lista_aux);
 					system("pause");				
