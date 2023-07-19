@@ -155,7 +155,7 @@ char* escoger_pal(lista_pal* tash) {
 
 lista_pal* palabras_usadas(lista_pal* lista_aux, char palabra[100]){
 
-    agregar_aux(lista_aux, palabra); // ActualizaciÃ³n de la lista auxiliar
+    agregar_aux(lista_aux, palabra); // Actualización de la lista auxiliar
     return 0;
 }
 
@@ -165,7 +165,13 @@ int buscar_usada(lista_pal* lista, char* palabra){
     strcpy(aux,palabra);
     for(j = 0; j<lista->tabla_aux->tamano; j++){
         if(lista->tabla_aux->tabla_aux[j] != NULL){
+            printf("\nj=%i\n",j);
+            system("pause");
+            printf("aux=%s\ttabla_aux=%s",aux,lista->tabla_aux->tabla_aux[j]);
+            system("pause");
             if(strcmp(aux,lista->tabla_aux->tabla_aux[j])==0){
+            //printf("aux=%s\ttabla_aux=%s",aux,lista->tabla_aux->tabla_aux);
+            system("pause");
             return 1;
             }            
         }
