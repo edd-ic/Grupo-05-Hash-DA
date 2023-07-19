@@ -28,6 +28,7 @@ int main(){
 				//mientras valido igual a 0 se realizan impresiones y otras acciones
 
 				while(flag==1){	
+					opcion=0;
 					printf("\nDesea jugar de nuevo? \n");	//imprime si desea jugar de nuevo
 					printf("Si[1]  No[2]\n\nIngrese respuesta: ");	//imprime si el jugador quiere o no jugar de nuevo
 					scanf("%i", &opcion);				//lee la opcion elegida por el usuario
