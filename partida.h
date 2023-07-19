@@ -13,7 +13,7 @@ int juego(int, char*,lista_pal*);//declaro lista_pal*
 int contar_palabras_archivo(int);
 
 int juego(int max, char* palabra_al,lista_pal *lista1){//cambiossss//cambiossss recibo lista1!!
-    int valido=0,ganar=0,i=0,j=0,opcion=0;
+    int valido=0,ganar=0,i=0,j=0,opcion=0,flag2=1;
     char mas[max],menos[max],asterisco[max];
     char palabra[max];
     int vidas,tamano=0;
@@ -40,20 +40,24 @@ int juego(int max, char* palabra_al,lista_pal *lista1){//cambiossss//cambiossss 
                 fclose(archivo);
                 return 1;
             }
-            if(datos_base_datos(palabra,lista1)==1){ // se revisa si la palabra ingresada esta en la base de datos............. entrega lista a datos base datos
-                tamano = strlen(palabra);
-                if(tamano==max){ //se comprueba que la palabra ingresada sea de tama�o max
-                    printf("\n%s\n",palabra);
-                   // printf("%s\n",palabra_al);
-                    valido=1;
-                    vidas--;
-                    
-                    // Escribir en el archivo
-                    fprintf(archivo, "Palabra introducida: %s\n", palabra);
-                }   
+            tamano = strlen(palabra);//preguntar antes de hacer hash
+            if(tamano==max){
+                if(datos_base_datos(palabra,lista1)==1){ // se revisa si la palabra ingresada esta en la base de datos............. entrega lista a datos base datos
+                        printf("\n%s\n",palabra);
+                    // printf("%s\n",palabra_al);
+                        valido=1;
+                        vidas--;
+                        
+                        // Escribir en el archivo
+                        fprintf(archivo, "Palabra introducida: %s\n", palabra);
+                       
+                }else{
+                    printf("\nPalabra no se encuentra en la base de datos.\n");
+                    valido=0;
+                }                
             }else{
                 printf("\nIngrese una palabra valida\n");
-                valido=0;
+                valido=0;                
             }
         }
         
@@ -93,28 +97,44 @@ int juego(int max, char* palabra_al,lista_pal *lista1){//cambiossss//cambiossss 
     if(ganar==1){
         fprintf(archivo, "El usuario ha ganado el juego.\n");
         printf("\nFelicidades has adivinado la palabra!\n");
-        printf("\nDesea guardar su partida? \n");
-    	printf("Si[1]  No[2]\n\nIngrese respuesta: ");
-    	scanf("%i", &opcion);											// aqui se pregunta si quiere guardar su partida en un archivo
-    	if(opcion == 1){
-    		fclose(archivo);
-		}else{
-			fclose(archivo);
-			remove("registro_juego.txt");
-		}
+        while(flag2==1){
+            printf("\nDesea guardar su partida? \n");
+            printf("Si[1]  No[2]\n\nIngrese respuesta: ");
+            scanf("%i", &opcion);											// aqui se pregunta si quiere guardar su partida en un archivo
+            if(opcion == 1){
+                fclose(archivo);
+                flag2=0;
+            }else if(opcion ==2){
+                fclose(archivo);
+                remove("registro_juego.txt");
+                flag2=0;
+            }else{
+                printf("\ningrese un valor valido!.\n");
+            int ch;
+			while ((ch = getchar()) != '\n' && ch != EOF);
+            }
+        }    
 
     }else{
         fprintf(archivo, "El usuario ha perdido el juego.\nLa palabra era %s.\n",palabra_al);
         printf("\nMala suerte se te han acabado las vidas :(\nLa palabra era %s\n",palabra_al);		// aqui se pregunta si quiere guardar su partida en un archivo
-        printf("\nDesea guardar su partida? \n");
-	    printf("Si[1]  No[2]\n\nIngrese respuesta: ");
-	    scanf("%i", &opcion);
-	    if(opcion == 1){
-    		fclose(archivo);
-		}else{
-			fclose(archivo);
-			remove("registro_juego.txt");
-		}
+        while(flag2==1){
+            printf("\nDesea guardar su partida? \n");
+            printf("Si[1]  No[2]\n\nIngrese respuesta: ");
+            scanf("%i", &opcion);            
+            if(opcion == 1){
+                fclose(archivo);
+                flag2=0;
+            }else if(opcion ==2){
+                fclose(archivo);
+                remove("registro_juego.txt");
+                flag2=0;
+            }else{
+                printf("\ningrese un valor valido!.\n");
+            int ch;
+			while ((ch = getchar()) != '\n' && ch != EOF);
+            }
+        }
     }
     return 0;
 }

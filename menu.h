@@ -18,14 +18,18 @@ int menu_ficha(){
 	        }else{
 	            printf("Elija una opcion valida\n");
 	            system("pause");
+                valido=0;
+                opcion=0;
+				int ch;
+				while ((ch = getchar()) != '\n' && ch != EOF);
 	        }
 	    }
     return 0;
 	}
 	
 int cantidad_vidas(){
-    int vidas,valido=0;
-    while(valido!=1){
+    int vidas=0,valido=1;
+    while(valido==1){
         system("cls");
         printf("Elija el numero de vidas: ");
         scanf("%i",&vidas);		//Lee la cantidad de vidas que el ususario eligio
@@ -37,6 +41,10 @@ int cantidad_vidas(){
         else{
             printf("\nElija una cantidad de vidas valida (Mayor a 0)\n");	//Salta un error si la cantidad de vidas que eligio el ususario no es valida.
             system("pause");
+            vidas=0;
+            valido=1;
+            int ch;
+			while ((ch = getchar()) != '\n' && ch != EOF);						
         }
     }
     return 0;
@@ -52,6 +60,9 @@ int tamano_palabra(){
             return max;
         }else{
             printf("\nIngrese un valor valido (entre 3 y 7)\n");	//Salta un error si el tama�o de la palabra no cumple con los requisitos.
+            error=1;
+            int ch;
+			while ((ch = getchar()) != '\n' && ch != EOF);            
         }
     }
     return 0;
