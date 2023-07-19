@@ -23,8 +23,6 @@ for (i = 0; i < largo; i++) {
     valor += palabra[i] * pow(tamano, largo - i - 1);
 }
     int hash = ((valor % tamano) + intento) % tamano;
-    printf("palabra=%s\nvalor=%i\n\nhash===%i",palabra,valor,hash);
-    system("pause");
     return hash;
 }
 
